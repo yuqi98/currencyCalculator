@@ -16,6 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //self.numberOfComponents = 5;
+    
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -23,5 +25,19 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+- (IBAction)update:(id)sender {
+}
+
+- (IBAction)switchButton:(id)sender {
+}
+
+- (IBAction)calculate:(id)sender {
+    Currency* currentValue;
+    ExchangeRate* currentExchangeRate;
+    
+}
+
 
 @end

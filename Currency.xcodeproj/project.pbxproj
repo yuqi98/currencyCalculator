@@ -13,6 +13,8 @@
 		2FF589F21D356A8B00587C82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FF589F01D356A8B00587C82 /* Main.storyboard */; };
 		2FF589F41D356A8B00587C82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FF589F31D356A8B00587C82 /* Assets.xcassets */; };
 		2FF589F71D356A8B00587C82 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FF589F51D356A8B00587C82 /* LaunchScreen.storyboard */; };
+		2FF58A031D3695FA00587C82 /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF58A021D3695FA00587C82 /* Currency.m */; };
+		2FF58A061D36978A00587C82 /* ExchangeRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF58A051D36978A00587C82 /* ExchangeRate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,10 @@
 		2FF589F31D356A8B00587C82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2FF589F61D356A8B00587C82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2FF589F81D356A8B00587C82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2FF58A011D3695FA00587C82 /* Currency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Currency.h; sourceTree = SOURCE_ROOT; };
+		2FF58A021D3695FA00587C82 /* Currency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Currency.m; sourceTree = SOURCE_ROOT; };
+		2FF58A041D36978A00587C82 /* ExchangeRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeRate.h; sourceTree = "<group>"; };
+		2FF58A051D36978A00587C82 /* ExchangeRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeRate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +80,10 @@
 		2FF589E71D356A8B00587C82 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2FF58A011D3695FA00587C82 /* Currency.h */,
+				2FF58A021D3695FA00587C82 /* Currency.m */,
+				2FF58A041D36978A00587C82 /* ExchangeRate.h */,
+				2FF58A051D36978A00587C82 /* ExchangeRate.m */,
 				2FF589E81D356A8B00587C82 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -149,8 +159,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FF58A031D3695FA00587C82 /* Currency.m in Sources */,
 				2FF589EF1D356A8B00587C82 /* ViewController.m in Sources */,
 				2FF589EC1D356A8B00587C82 /* AppDelegate.m in Sources */,
+				2FF58A061D36978A00587C82 /* ExchangeRate.m in Sources */,
 				2FF589E91D356A8B00587C82 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,6 +312,7 @@
 				2FF589FD1D356A8B00587C82 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
