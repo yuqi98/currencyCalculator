@@ -15,7 +15,7 @@
 @synthesize symbol;
 @synthesize formatter;
 
-/*-(Currency*) initWithCoder:(NSCoder *)aDecoder
+-(Currency*) initWithCoder:(NSCoder *)aDecoder
 {
 }
 
@@ -25,12 +25,21 @@
 
 -(Currency*) initWithName:(NSString *)aName alphaCode:(NSString *)aCode Symbol:(NSString *)aSymbol decimalPlaces:(NSNumber *)places
 {
+    self=[super init];
+    if(self)
+    {
+        self.name=aName;
+        self.symbol=aSymbol;
+        self.alphaCode=aCode;
+        //self.formatter.=places;
+    }
+    return self;
 }
 
 -(NSString*) format:(NSNumber *)quantity
 {
-    
-}*/
+    return [NSString stringWithFormat:@"%@",quantity];
+}
 
 -(NSString*) description
 {

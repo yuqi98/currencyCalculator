@@ -36,7 +36,12 @@
 - (IBAction)calculate:(id)sender {
     Currency* currentValue;
     ExchangeRate* currentExchangeRate;
+    NSNumber* value;
+    NSString* a=[NSString stringWithString:self.inputValue.text];
+    value=@(a.floatValue);
     
+    NSString* realvalue=[currentValue format: value];
+    self.outputValue.text=[currentExchangeRate exchangeToForeign:[currentValue quantity].floatvalue];
 }
 
 

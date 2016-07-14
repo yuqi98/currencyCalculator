@@ -8,20 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Currency : NSObject// <NSCoding>
+@interface Currency : NSObject <NSCoding>
 
 @property (strong, nonatomic) NSString* name;
 @property (strong, nonatomic) NSString* alphaCode;
 @property (strong, nonatomic) NSString* symbol;
 @property (strong, nonatomic) NSNumberFormatter* formatter;
 
-//-(Currency*) initWithName:(NSString*) aName
-//                alphaCode:(NSString*) aCode
-//                   Symbol:(NSString*) aSymbol
-//            decimalPlaces:(NSNumber*) places;
-//-(NSString*) format:(NSNumber*) quantity;
+-(Currency*) initWithName:(NSString*) aName
+                alphaCode:(NSString*) aCode
+                   Symbol:(NSString*) aSymbol
+            decimalPlaces:(NSNumber*) places;
+-(NSString*) format:(NSNumber*) quantity;
 
-//-(NSString*) description;
+-(NSString*) description;
 
 
 @end

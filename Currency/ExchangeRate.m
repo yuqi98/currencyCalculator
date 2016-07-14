@@ -90,9 +90,9 @@
 }
 
 
-/*-(NSString*) exchangeToForeign:(NSNumber *)value
+-(NSString*) exchangeToForeign:(NSNumber *)value
 {
-    
+    return ([NSString stringWithFormat:@"%f",value.floatValue/self.rate.floatValue]);
 }
 
 -(void) reverse
@@ -108,7 +108,7 @@
 -(NSString*) description
 {
     return[NSString stringWithFormat:@"%@%@",self.home,self.foreign];
-}*/
+}
 
 
 
@@ -127,9 +127,11 @@
                                                         if( [obj isKindOfClass: [NSDictionary class]] ){
                                                             NSDictionary *dict = (NSDictionary*)obj;
                                                             NSLog(@"%@", [dict description]);
-                                                            NSDictionary* results = [dict objectForKey: @"results"];
+                                                            NSDictionary* query=[dict objectForKey: @"query"];
+                                                            NSDictionary* results = [query objectForKey: @"results"];
                                                             NSDictionary* rate=[results objectForKey: @"rate"];
-                                                            self.rate=[]
+                                                           // self.rate=rate.descriptionInStringsFileFormat;
+                                                            
                                                         }else{
                                                             NSLog(@"Not a dictionary.");
                                                             exit(1);

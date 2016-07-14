@@ -37,7 +37,7 @@
 //-(void) reverse;
 //-(NSString*) name;
 
-//-(NSString*) description;   //to debug    include all information
+-(NSString*) description;   //to debug    include all information
 
 -(ExchangeRate*) initWithHome:(Currency*) aHome
                       foreign:(Currency*) aForeign;
