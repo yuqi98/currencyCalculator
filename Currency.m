@@ -13,15 +13,8 @@
 @synthesize name;
 @synthesize alphaCode;
 @synthesize symbol;
-@synthesize formatter;
+@synthesize decimalPlaces;
 
--(Currency*) initWithCoder:(NSCoder *)aDecoder
-{
-}
-
-- (void)encodeWithCoder:(NSCoder *)encoder
-{
-}
 
 -(Currency*) initWithName:(NSString *)aName alphaCode:(NSString *)aCode Symbol:(NSString *)aSymbol decimalPlaces:(NSNumber *)places
 {
@@ -31,7 +24,7 @@
         self.name=aName;
         self.symbol=aSymbol;
         self.alphaCode=aCode;
-        //self.formatter.=places;
+        self.decimalPlaces=places;
     }
     return self;
 }

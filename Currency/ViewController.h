@@ -10,7 +10,7 @@
 #import "Currency.h"
 #import "ExchangeRate.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <UIPickerViewDelegate,UIPickerViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITextField *inputValue;
 
@@ -20,6 +20,10 @@
 @property (weak, nonatomic) IBOutlet UIPickerView *outputType;
 
 @property(nonatomic, readonly) NSInteger numberOfComponents;
+
+@property (weak, nonatomic) IBOutlet UILabel *outputSymbol;
+@property(strong,nonatomic) NSMutableArray* currencyList;
+@property (weak, nonatomic) IBOutlet UILabel *inputSymbol;
 
 - (IBAction)switchButton:(id)sender;
 

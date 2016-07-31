@@ -17,19 +17,7 @@
 @synthesize completionHandlerDictionary;
 @synthesize ephemeralConfigObject;
 
--(ExchangeRate*) initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super init];
-    if(self){
-        self.expiresOn = [aDecoder decodeObjectOfClass: [ExchangeRate class] forKey: @"date"];
-    }
-    return self;
-}
 
-- (void)encodeWithCoder:(NSCoder *)encoder
-{
-    [encoder encodeObject:self.expiresOn forKey:@"date"];
-}
 
 -(ExchangeRate*) initWithDate:(NSDate*)aDate
 {
@@ -80,11 +68,11 @@
 +(NSArray*) allExchangeRates
 {
     NSMutableArray* allRates = [[NSMutableArray alloc] init];
-    [allRates addObject: [[ExchangeRate alloc] initWithHomeCurrency: @"USD" foreignCurrency: @"GBP"]];
-    [allRates addObject: [[ExchangeRate alloc] initWithHomeCurrency: @"USD" foreignCurrency: @"JPY"]];
-    [allRates addObject: [[ExchangeRate alloc] initWithHomeCurrency: @"USD" foreignCurrency: @"MXN"]];
-    [allRates addObject: [[ExchangeRate alloc] initWithHomeCurrency: @"USD" foreignCurrency: @"EUR"]];
-    [allRates addObject: [[ExchangeRate alloc] initWithHomeCurrency: @"USD" foreignCurrency: @"CAD"]];
+    [allRates addObject: [[Currency alloc] initWithName:@"US Dollar" alphaCode:@"USD" Symbol:@"$" decimalPlaces:@(2)]];
+    [allRates addObject: [[Currency alloc] initWithName:@"Japanese Yen" alphaCode:@"JPY" Symbol:@"¥" decimalPlaces:@(0)]];
+    [allRates addObject: [[Currency alloc] initWithName:@"Chinese Yuan" alphaCode:@"CNY" Symbol:@"¥" decimalPlaces:@(2)]];
+    [allRates addObject: [[Currency alloc] initWithName:@"Euro" alphaCode:@"EUR" Symbol:@"€" decimalPlaces:@(2)]];
+    [allRates addObject: [[Currency alloc] initWithName:@"US Dollar" alphaCode:@"USD" Symbol:@"$" decimalPlaces:@(2)]];
     //NSLog(@"%@",allRates);
     return (NSArray*)allRates;
 }
@@ -97,12 +85,16 @@
 
 -(void) reverse
 {
+    self.rate=@(1.0/(self.rate).floatValue);
     
+    Currency* tmp=self.home;
+    self.home=self.foreign;
+    self.foreign=tmp;
 }
 
 -(NSString*) name
 {
-    
+    return [home.alphaCode stringByAppendingString:foreign.alphaCode];
 }
 
 -(NSString*) description
@@ -116,9 +108,8 @@
 {
     NSOperationQueue *mainQueue = [NSOperationQueue mainQueue];
     NSURLSession *delegateFreeSession = [NSURLSession sessionWithConfiguration: self.ephemeralConfigObject delegate: nil delegateQueue: mainQueue];
-    for(ExchangeRate* i in [ExchangeRate allExchangeRates]){
-        NSLog(@"dispatching %@", [i description]);
-        NSURLSessionTask* task = [delegateFreeSession dataTaskWithURL: [i exchangeRateURL]
+        NSLog(@"dispatching %@", [self description]);
+        NSURLSessionTask* task = [delegateFreeSession dataTaskWithURL: [self exchangeRateURL]
                                                     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                                         NSLog(@"Got response %@ with error %@.\n", response, error);
                                                         id obj = [NSJSONSerialization JSONObjectWithData: data
@@ -129,8 +120,12 @@
                                                             NSLog(@"%@", [dict description]);
                                                             NSDictionary* query=[dict objectForKey: @"query"];
                                                             NSDictionary* results = [query objectForKey: @"results"];
-                                                            NSDictionary* rate=[results objectForKey: @"rate"];
-                                                           // self.rate=rate.descriptionInStringsFileFormat;
+                                                            NSDictionary* Rate=[results objectForKey: @"rate"];
+                                                
+                                            
+                                                NSString* tmp = (NSString*)[Rate objectForKey:@"Rate"];
+                                                            
+                                                self.rate = @(tmp.floatValue);
                                                             
                                                         }else{
                                                             NSLog(@"Not a dictionary.");
@@ -141,7 +136,6 @@
                                                          encoding: NSUTF8StringEncoding]);*/
                                                     }];
         [task resume];
-    }
 }
 
 
