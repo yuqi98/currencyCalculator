@@ -13,7 +13,7 @@
 
 @property (strong, nonatomic) Currency* home;
 @property (strong, nonatomic) Currency* foreign;
-@property (assign, nonatomic) NSNumber* rate;
+@property (strong, nonatomic) NSNumber* rate;
 //assign  not*  copy things out
 //float->NSNumber   cuz float cannot be encode
 @property (strong, nonatomic) NSDate* expiresOn;
@@ -22,7 +22,7 @@
 @property (strong) NSURLSessionConfiguration *ephemeralConfigObject;
 
 -(NSURL*) exchangeRateURL;
-+(NSArray*) allExchangeRates;
++(NSMutableArray*) allExchangeRates;
 
 
 //strong, assign must synthesize
@@ -32,7 +32,7 @@
 
 //-(NSString*) exchangeToHome: (NSNumber*) value;  //be simple  don't need this one
 
-//-(NSString*) exchangeToForeign: (NSNumber*) value;
+-(NSString*) exchangeToForeign: (NSNumber*) value;
 
 //-(void) reverse;
 //-(NSString*) name;

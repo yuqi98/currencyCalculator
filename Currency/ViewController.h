@@ -18,6 +18,7 @@
 
 @property (weak, nonatomic) IBOutlet UIPickerView *inputType;
 @property (weak, nonatomic) IBOutlet UIPickerView *outputType;
+@property (weak, nonatomic) IBOutlet UILabel *currentRate;
 
 @property(nonatomic, readonly) NSInteger numberOfComponents;
 

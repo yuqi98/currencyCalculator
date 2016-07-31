@@ -22,6 +22,8 @@
     [super viewDidLoad];
     //self.numberOfComponents = 5;
     
+    currencyList = [ExchangeRate allExchangeRates];
+    
     self.inputType.delegate = self;
     self.outputType.delegate =self;
     self.inputType.dataSource=self;
@@ -95,6 +97,7 @@
     
     [currentExchangeRate fetch];
     
+    self.currentRate.text=[NSString stringWithFormat: @"%@", currentExchangeRate.rate];
     
     self.outputValue.text = [currentExchangeRate exchangeToForeign:@(self.inputValue.text.floatValue)];
     
